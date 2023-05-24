@@ -1,0 +1,26 @@
+## User Story
+User Story: Let's have a Dogventure!
+
+As a dog owner, I want to use the Dog Park application to find a suitable dog park for the day, considering the weather conditions and the park's capacity so that I can take my Dogs out to play
+
+Acceptance Criteria:
+
+Given that I have opened the Dogventure application,
+When I am prompted to provide my location,
+Then I should have the option to input my current location or search for a specific area to find nearby dog parks.
+
+Given that I have provided my location or searched for a specific area,
+When I view the results,
+Then I should see a list of dog parks in the selected area, sorted by proximity.
+
+When I view its details,
+Then I should see the park's address, contact information, and operating hours.
+
+When I scroll further,
+Then I should see the park's size or capacity, indicating whether it can accommodate multiple dogs.
+
+When I look for user reviews or ratings,
+Then I should have the option to view user reviews or ratings for the dog park.
+
+When I want to customize my preferences,
+Then I should have the ability to set my dog's breed or size to receive tailored recommendations.
