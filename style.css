@@ -62,3 +62,8 @@ body, h1, h2, p, ul, li {
     font-size: 14px;
     color: #666;
   }
+
+  .map {
+    height: 400px;
+    width: 100%;
+  }
