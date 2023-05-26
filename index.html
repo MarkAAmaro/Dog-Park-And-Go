@@ -22,20 +22,25 @@
   </header>
 
   <main>
-    <section id="search-section">
-      <h2>Find Dog Parks</h2>
-      <button id="search-btn">Search</button>
-    </section>
-
+  
     <section id="park-list-section">
       <h2>Nearby Dog Parks</h2>
       <button id="park-list-btn">View List</button>
     </section>
-<div id ="search-container">
-  <h2>Current Weather</h2>
-  <input type="text" id="city-input" placeholder="Enter city">
-    <section id="weather-section">
-     
+  
+    <div id="search-container">
+      <h2>Current Weather</h2>
+      <input type="text" id="city-input" placeholder="Enter city">
+      <button id="search-btn">Get Weather</button>
+      <section id="weather-section">
+        <p>City: <span id="city-name"></span></p>
+        <p id="temperature"></p>
+        <p id="humidity"></p>
+        <p id="wind-speed"></p>
+        <div id="weather-icon"></div>
+      </section>
+    </div>
+
     </section>
   </div>
     <section id="park-details-section">
