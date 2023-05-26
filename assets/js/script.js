@@ -1,9 +1,27 @@
 const apiKey = '599e78c3459a8c73ce2b3faeb84e514d';
 
+
+function saveZipCode(event) {
+  event.preventDefault();
+  var zipCodeInput = document.getElementById('zipCode');
+  var zipCode = zipCodeInput.value;
+
+  localStorage.setItem('zipCode', zipCode);
+
+  //Redirect to indexhtml page
+  window.location.href = 'index.html';
+}
+
+document.getElementById('weather-btn').addEventListener('click', function() {
+    const cityInput = document.getElementById('city-input').value;
+    searchWeather(cityInput);
+  });
+
 document.getElementById('search-btn').addEventListener('click', function() {
   const cityInput = document.getElementById('city-input').value;
   searchWeather(cityInput);
 });
+
 
 function searchWeather(city) {
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)

@@ -1,61 +1,66 @@
-body, h1, h2, p, ul, li {
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
-  }
-  
-  header {
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  header h1 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  nav {
-    margin-top: 10px;
-  }
-  
-  nav ul {
-    list-style-type: none;
-  }
-  
-  nav ul li {
-    display: inline-block;
-    margin-right: 10px;
-  }
-  
-  main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  section {
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  /* Button styles */
+body,
+h1,
+h2,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+header {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+main {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Button styles */
 button {
   padding: 10px 20px;
   background-color: #f0f0f0;
@@ -71,7 +76,20 @@ button:hover {
   font-size: 17px;
 }
 
-  .map {
-    height: 400px;
-    width: 100%;
-  }
+.map {
+  height: 400px;
+  width: 100%;
+}
+
+/* CSS for intro.html*/
+#go-button {
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: font-size 0.2s ease-in-out;
+  text-decoration: none;
+}

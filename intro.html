@@ -5,17 +5,25 @@
     <title>Dog-Park-And-Go</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <!--starting page-->
+
 <body>
     <header>
         <h1>Dog-Park-And-Go</h1>
     </header>
-    <h2>Wanna Go For a Walk </h2>
-    <label for ="zipCode">Zip Code:</label>
-    <input type="text" id="zipCode" name="zipCode" pattern="[0-9]{5}" maxlength="5" required>
-    <a id ="go-button" href="index.html" >Let's Go!</a>
+    <main>
+        <h2>Wanna Go For a Walk?</h2>
+        <form id="'zipCodeForm" onsubmit="saveZipCode(event)">
+        <label for="zipCode">Zip Code:</label>
+        <input type="text" id="zipCode">
+        <button type="submit">Let's Go!</button>
+        </form>
+    </main>
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
