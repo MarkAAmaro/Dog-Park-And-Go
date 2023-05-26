@@ -2,7 +2,10 @@
 <html>
 <head>
   <title>Dog Park & Go</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"  href = "style.css">
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY6NmG73gJVoMm3w6-YvnWcN8-8_mELAM&callback=initMap">
+  </script>
 </head>
 <body>
   <header>
@@ -36,10 +39,10 @@
 
     <section id="map-section">
       <h2>Map</h2>
-      <button id="map-btn">Open Map</button>
+      <div class="map" id="map"></div>
     </section>
   </main>
-
-  <script src="script.js"></script>
+  <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
