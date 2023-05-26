@@ -1,4 +1,3 @@
-// Setting API for weather
 const apiKey = '599e78c3459a8c73ce2b3faeb84e514d';
 
 
@@ -18,8 +17,14 @@ document.getElementById('weather-btn').addEventListener('click', function() {
     searchWeather(cityInput);
   });
 
-  function searchWeather(city) {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
+document.getElementById('search-btn').addEventListener('click', function() {
+  const cityInput = document.getElementById('city-input').value;
+  searchWeather(cityInput);
+});
+
+
+function searchWeather(city) {
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
       displayCurrentWeather(data);
@@ -30,12 +35,17 @@ document.getElementById('weather-btn').addEventListener('click', function() {
 }
 
 function displayCurrentWeather(data) {
-const city = data.city.name;
-  const date = data.list[0].dt_txt;
-  const temperature = data.list[0].main.temp;
-  const humidity = data.list[0].main.humidity;
-  const windSpeed = data.list[0].wind.speed;
-  const icon = data.list[0].weather[0].icon;
+  const city = data.name;
+  const temperature = data.main.temp;
+  const humidity = data.main.humidity;
+  const windSpeed = data.wind.speed;
+  const icon = data.weather[0].icon;
+
+  document.getElementById('city-name').textContent = city;
+  document.getElementById('temperature').textContent = `Temperature: ${temperature} K`;
+  document.getElementById('humidity').textContent = `Humidity: ${humidity}%`;
+  document.getElementById('wind-speed').textContent = `Wind Speed: ${windSpeed} m/s`;
+  document.getElementById('weather-icon').innerHTML = `<img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">`;
 }
 
 function initMap() {
