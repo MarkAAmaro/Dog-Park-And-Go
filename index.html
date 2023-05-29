@@ -5,17 +5,28 @@
     <title>Dog-Park-And-Go</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+        integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <!--starting page-->
+
 <body>
-    <header>
-        <h1>Dog-Park-And-Go</h1>
-    </header>
-    <h2>Wanna Go For a Walk </h2>
-    <label for ="zipCode">Zip Code:</label>
-    <input type="text" id="zipCode" name="zipCode" pattern="[0-9]{5}" maxlength="5" required>
-    <a id ="go-button" href="result.html" >Let's Go!</a>
+    <main>
+        <header>
+            <h1>Dog-Park-And-Go</h1>
+        </header>
+        <h2>Wanna Go For a Walk </h2>
+        <label for="zipCode">Zip Code:</label>
+        <input type="text" id="zipCode" name="zipCode" pattern="[0-9]{5}" maxlength="5" required>
+        <button id="go-button">Let's Go!</button>
+
+    </main>
+  
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY6NmG73gJVoMm3w6-YvnWcN8-8_mELAM&libraries=places&callback=initMap">
+        </script>
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
