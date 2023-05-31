@@ -24,3 +24,9 @@ Then I should have the option to view user reviews or ratings for the dog park.
 
 When I want to customize my preferences,
 Then I should have the ability to set my dog's breed or size to receive tailored recommendations.
+
+
+
+References: https://codedamn.com/news/javascript/javascript-event-listener-not-working
+https://developers.google.com/maps/documentation/places/web-service/search-nearby
+https://www.youtube.com/watch?v=wszFDXP0lkA&t=13s
