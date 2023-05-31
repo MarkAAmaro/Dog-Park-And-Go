@@ -13,12 +13,14 @@ body {
   font-size: 16px;
   line-height: 1.5;
   color: #333;
+  font-family: 'Pangolin', cursive;
 }
 
 header {
   background-color: #f0f0f0;
   padding: 20px;
   text-align: center;
+  font-family: 'Pangolin', cursive;
 }
 
 header h1 {
@@ -26,6 +28,7 @@ header h1 {
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
+  font-family: 'Pangolin', cursive;
 }
 
 nav {
@@ -58,6 +61,7 @@ h2 {
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
+  font-family: 'Pangolin', cursive;
 }
 
 /* Button styles */
@@ -70,10 +74,13 @@ button {
   color: #333;
   cursor: pointer;
   transition: font-size 0.2s ease-in-out;
+  font-family: 'Pangolin', cursive;
 }
 
 button:hover {
   font-size: 17px;
+  font-family: 'Pangolin', cursive;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .map {
