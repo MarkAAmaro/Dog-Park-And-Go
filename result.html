@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Dog Park & Go</title>
   <!--Pure CSS-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
+    integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
   <!--<script async 
    src="https://maps.googleapis.com/maps/api/place/photo?photo_reference=ChIJrw7QBK9YXIYRvBagEDvhVgg&key=AIzaSyAY6NmG73gJVoMm3w6-YvnWcN8-8_mELAM">
@@ -14,27 +16,28 @@
 </script>
 
 </head>
+
 <body>
   <header>
     <h1>Dog Park & Go</h1>
     <nav>
-      
+
     </nav>
   </header>
 
   <main>
-  
+
     <section id="park-list-section">
       <h2>Nearby Dog Parks</h2>
       <button id="park-list-btn">View List</button>
     </section>
-  
+
     <div id="search-container">
       <h2>Current Weather</h2>
       <input type="text" id="city-input" placeholder="Enter city">
       <button id="search-btn">Get Weather</button>
       <section id="weather-section">
-        <p>City: <span id="city-name"></span></p>
+        <p>Location: <span id="city-name"></span></p>
         <p id="temperature"></p>
         <p id="humidity"></p>
         <p id="wind-speed"></p>
@@ -43,12 +46,14 @@
     </div>
 
     </section>
-  </div>
+    </div>
     <section id="park-details-section">
       <h2>Park Details</h2>
       <button id="park-details-btn">View Details</button>
     </section>
-
+    <section id="dogBreeds-section">
+      <h2>Dog Breeds</h2>
+    </section>
     <section id="map-section">
       <h2>Map</h2>
       <input type="text" id="search-city" placeholder="Enter city">
