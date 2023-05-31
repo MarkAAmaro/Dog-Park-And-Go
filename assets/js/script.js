@@ -152,7 +152,7 @@ function initMap() {
 }
 
 
-initMap();
+//initMap();
 
 
 //previous code 
