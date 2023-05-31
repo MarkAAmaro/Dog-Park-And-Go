@@ -195,6 +195,7 @@ function createMarker(place) {
       infowindow.open(map);
     }); */
 }
+//initMap();
 
 function createPhotoMarker(place) {
     var photos = place.photos;
