@@ -1,24 +1,68 @@
+//weather API
 const apiKey = '599e78c3459a8c73ce2b3faeb84e514d';
-
 
 //save zip code to local storage
 document.querySelector('main').addEventListener('click', function (event) {
   // Check if the event target is the go-button
   if (event.target.matches('#go-button')) {
+    event.preventDefault();
     saveZipCode(event);
+
   }
 });
 
 function saveZipCode(event) {
-  event.preventDefault();
+
   var zipCodeInput = document.getElementById('zipCode');
   var zipCode = zipCodeInput.value;
 
   localStorage.setItem('zipCode', zipCode);
 
+  getDogBreeds();
   //Redirect 
-  window.location.href = 'result.html';
+  setTimeout(function () {
+    window.location.href = 'result.html';
+  }, 1000);
+
 }
+
+
+//still need to display breeds based on userinput of small or medium
+function getDogBreeds() {
+  //dog API
+  var dogAPIkey = 'live_ORSd6zMzFxD9kAyCD7rK2W1Q0tTLMbHWIVySWzaGXwFu0PoO8NnVxQQ4xpeDRGUX';
+  var dogUrl = 'https://api.thedogapi.com/v1/breeds?size=small';
+
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', dogUrl);
+  xhr.setRequestHeader('x-api-key', dogAPIkey);
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      var breeds = JSON.parse(xhr.responseText);
+      processDogBreeds(breeds);
+    } else {
+      console.log('Error: ' + xhr.status);
+    }
+  };
+  xhr.send();
+}
+
+function displayDogBreeds(breeds) {
+  var breedsSection = document.getElementById('dogBreeds-section');
+  breedsSection.innerHTML = "";
+
+  for (var i = 0; i < breeds.length; i++) {
+    var breed = breeds[i];
+    var breedName = breed.name;
+
+    var breedElement = document.createElement('p');
+    breedElement.textContent = breedName;
+    breedsSection.appendChild(breedElement);
+  }
+}
+
+
+
 
 //fetch weather based on zipcode from local storage
 function zipCodefromLocal() {
@@ -36,7 +80,6 @@ function searchWeather(zipCode) {
     .then(response => response.json())
     .then(data => {
       displayCurrentWeather(data);
-      console.log(data);
     })
     .catch(error => {
       console.log('Error:', error);
@@ -96,14 +139,14 @@ function searchDogParks(zipCode) {
 
 function initMap() {
   var options = {
-   zoom: 8,
+    zoom: 8,
     center: { lat: 29.4252, lng: -98.4946 }
   }
 
   var map = new google.maps.Map(document.getElementById("map"), options);
 
   var marker = new google.maps.Marker({
-    position: { lat: 29.4260, lng: -98.4861 }, map: map, 
+    position: { lat: 29.4260, lng: -98.4861 }, map: map,
     //icon: image
   });
 }
