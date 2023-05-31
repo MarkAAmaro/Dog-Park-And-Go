@@ -35,25 +35,26 @@ function saveZipCode(event) {
 function getDogBreeds() {
   //dog API
   var dogAPIkey = 'live_ORSd6zMzFxD9kAyCD7rK2W1Q0tTLMbHWIVySWzaGXwFu0PoO8NnVxQQ4xpeDRGUX';
-  var dogUrl = 'https://api.thedogapi.com/v1/breeds?size=small';
 
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', dogUrl);
-  xhr.setRequestHeader('x-api-key', dogAPIkey);
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      var breeds = JSON.parse(xhr.responseText);
-      processDogBreeds(breeds);
-    } else {
-      console.log('Error: ' + xhr.status);
-    }
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("x-api-key", dogAPIkey);
+
+  var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
   };
-  xhr.send();
+
+  fetch("https://api.thedogapi.com/v1/breeds?limit=10&page=0", requestOptions)
+    .then(response => response.text())
+    .then(result => displayDogBreeds(result))
+    .catch(error => console.log('error', error));
 }
 
 function displayDogBreeds(breeds) {
   var breedsSection = document.getElementById('dogBreeds-section');
-  breedsSection.innerHTML = "";
+  breedsSection.innerHTML = " ";
 
   for (var i = 0; i < breeds.length; i++) {
     var breed = breeds[i];
@@ -64,6 +65,7 @@ function displayDogBreeds(breeds) {
     breedsSection.appendChild(breedElement);
   }
 }
+
 
 //fetch weather based on zipcode from local storage
 function zipCodefromLocal() {
