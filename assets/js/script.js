@@ -1,6 +1,7 @@
 //weather API
 const apiKey = '599e78c3459a8c73ce2b3faeb84e514d';
 var map;
+var parsezip;
 
 //save zip code to local storage
 document.querySelector('main').addEventListener('click', function (event) {
@@ -15,7 +16,7 @@ function saveZipCode(event) {
 
   var zipCodeInput = document.getElementById('zipCode');
   var zipCode = zipCodeInput.value;
-
+  parsezip = zipCodeInput.value;
   localStorage.setItem('zipCode', zipCode);
 
   getDogBreeds();
@@ -23,7 +24,7 @@ function saveZipCode(event) {
   setTimeout(function () {
     window.location.href = 'result.html';
   }, 1000);
-
+  searchDogParks(parsezip);
 }
 
 /* document.getElementById('weather-btn').addEventListener('click', function() {
@@ -212,9 +213,9 @@ function createPhotoMarker(place) {
 }
 /* findPlace(); */
 
-document.getElementById('park-btn').addEventListener('click', function() {
-  codeAddress(); 
-}); 
+//document.getElementById('park-btn').addEventListener('click', function() {
+//  codeAddress(); 
+//}); 
 
 function codeAddress() {
     var loc;
