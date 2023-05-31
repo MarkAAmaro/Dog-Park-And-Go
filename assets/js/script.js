@@ -24,7 +24,6 @@ function saveZipCode(event) {
   setTimeout(function () {
     window.location.href = 'result.html';
   }, 1000);
-  searchDogParks(parsezip);
 }
 
 /* document.getElementById('weather-btn').addEventListener('click', function() {
@@ -145,124 +144,124 @@ function searchDogParks(zipCode) {
   });
 }
 
-function initMap() {
-    var options = {
-      zoom: 12,
-      center: { lat: 29.4252, lng: -98.4946 }
-    }
+//function initMap() {
+//    var options = {
+//      zoom: 12,
+//      center: { lat: 29.4252, lng: -98.4946 }
+//    }
 
-    map = new google.maps.Map(document.getElementById("map"), options);
+//    map = new google.maps.Map(document.getElementById("map"), options);
 
-    var marker = new google.maps.Marker({
-      position: { lat: 29.4260, lng: -98.4861 }, map: map,
+//    var marker = new google.maps.Marker({
+//      position: { lat: 29.4260, lng: -98.4861 }, map: map,
       //icon: image
-    });
+//    });
 
-    map = new google.maps.Map(document.getElementById("map"), options);
+//    map = new google.maps.Map(document.getElementById("map"), options);
 
     /*var marker = new google.maps.Marker({
         position:{lat:29.4260,lng:-98.4861},map:map
     //    icon: image
     }); */
 
-    const request = {
-      query: "pet park",
-      fields: ["name", "geometry", "photo", "opening_hours", "formatted_address"],
-    };
+//    const request = {
+//      query: "pet park",
+//      fields: ["name", "geometry", "photo", "opening_hours", "formatted_address"],
+//    };
 
-    service = new google.maps.places.PlacesService(map);
-    service.findPlaceFromQuery(request, (results, status) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        for (let i = 0; i < results.length; i++) {
+//    service = new google.maps.places.PlacesService(map);
+//    service.findPlaceFromQuery(request, (results, status) => {
+//      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+//        for (let i = 0; i < results.length; i++) {
           /* createMarker(results[i]); */
-          createPhotoMarker(results[i]);
-        }
+//          createPhotoMarker(results[i]);
+//        }
 
-        map.setCenter(results[0].geometry.location);
-      }
-    });
-}
+//        map.setCenter(results[0].geometry.location);
+//      }
+//    });
+//}
 
-function createMarker(place) {
-    if (!place.geometry || !place.geometry.location) return;
+//function createMarker(place) {
+//    if (!place.geometry || !place.geometry.location) return;
 
-    const marker = new google.maps.Marker({
-      map,
-      position: place.geometry.location,
-    });
-    marker.setMap(map);
+//    const marker = new google.maps.Marker({
+//      map,
+//      position: place.geometry.location,
+//    });
+//    marker.setMap(map);
     /*google.maps.event.addListener(marker, "click", () => {
       infowindow.setContent(place.name || "");
       infowindow.open(map);
     }); */
-}
+//}
 //initMap();
 
-function createPhotoMarker(place) {
-    var photos = place.photos;
-    if (!photos) {
-      return;
-    }
+//function createPhotoMarker(place) {
+//    var photos = place.photos;
+//    if (!photos) {
+//      return;
+//    }
 
-    var marker = new google.maps.Marker({
-      map: map,
-      position: place.geometry.location,
-      title: place.name,
-      icon: photos[0].getUrl({maxWidth: 50, maxHeight: 50})
-    });
-}
+//    var marker = new google.maps.Marker({
+//      map: map,
+//      position: place.geometry.location,
+//      title: place.name,
+//      icon: photos[0].getUrl({maxWidth: 50, maxHeight: 50})
+//    });
+//}
 /* findPlace(); */
 
 //document.getElementById('park-btn').addEventListener('click', function() {
 //  codeAddress(); 
 //}); 
 
-function codeAddress() {
-    var loc;
-    var address = document.getElementById('search-city').value;
-    var geocoder= new google.maps.Geocoder();
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == 'OK') {
-        loc = results[0].geometry.location;
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
+//function codeAddress() {
+//    var loc;
+//    var address = document.getElementById('search-city').value;
+//    var geocoder= new google.maps.Geocoder();
+//    geocoder.geocode( { 'address': address}, function(results, status) {
+//      if (status == 'OK') {
+//        loc = results[0].geometry.location;
+//        map.setCenter(results[0].geometry.location);
+//        var marker = new google.maps.Marker({
+//            map: map,
+//            position: results[0].geometry.location
+//        });
 
-        const request = {
+//        const request = {
       
-          location: loc,
-          radius: '10000',
-          fields: ["name", "geometry", "photo", "opening_hours", "formatted_address"],
-          type : 'Park',
-          keyword: 'dog park',
-        };
-        service = "";
-        service = new google.maps.places.PlacesService(map);
-        service.nearbySearch(request, (parkresults, parkstatus) => {
-          if (parkstatus === google.maps.places.PlacesServiceStatus.OK && parkresults) {
-            for (let i = 0; i < parkresults.length; i++) {
+//          location: loc,
+//          radius: '10000',
+//          fields: ["name", "geometry", "photo", "opening_hours", "formatted_address"],
+//          type : 'Park',
+//          keyword: 'dog park',
+//        };
+//        service = "";
+//        service = new google.maps.places.PlacesService(map);
+//        service.nearbySearch(request, (parkresults, parkstatus) => {
+//          if (parkstatus === google.maps.places.PlacesServiceStatus.OK && parkresults) {
+//            for (let i = 0; i < parkresults.length; i++) {
               /* createMarker(results[i]); */
-              createPhotoMarker(parkresults[i]);
-            }
+//              createPhotoMarker(parkresults[i]);
+//            }
       
-            map.setCenter(results[0].geometry.location);
-          }
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
-    document.getElementById('map').setAttribute("class", "map")
-}
+//            map.setCenter(results[0].geometry.location);
+//          }
+//        });
+//      } else {
+//        alert('Geocode was not successful for the following reason: ' + status);
+//      }
+//    });
+//    document.getElementById('map').setAttribute("class", "map")
+//}
 
-document.getElementById('search-btn').addEventListener('click', function() {
-  const cityInput = document.getElementById('city-input').value;
-  searchWeather(cityInput); 
-}); 
+//document.getElementById('search-btn').addEventListener('click', function() {
+//  const cityInput = document.getElementById('city-input').value;
+//  searchWeather(cityInput); 
+//}); 
 
-document.getElementById('park-details-btn').addEventListener('click', function() {
-  const cityInput = document.getElementById('city-input').value;
-  searchDogParks(cityInput); 
-}); 
+//document.getElementById('park-details-btn').addEventListener('click', function() {
+//  const cityInput = document.getElementById('city-input').value;
+//  searchDogParks(cityInput); 
+//}); 
