@@ -9,6 +9,9 @@ li {
 }
 
 body {
+  background-image: url(https://static.vecteezy.com/system/resources/previews/000/303/604/original/a-dog-park-scene-vector.jpg);
+  background-attachment: fixed;
+  background-size: cover;
   font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 1.5;
