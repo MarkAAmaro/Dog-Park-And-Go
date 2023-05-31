@@ -116,6 +116,7 @@ function searchDogParks(zipCode) {
       var lat = location.lat();
       var lng = location.lng();
 
+      map.setCenter(results[0].geometry.location);
       //places API
       var service = new google.maps.places.PlacesService(document.createElement('div'));
       var request = {
@@ -128,9 +129,11 @@ function searchDogParks(zipCode) {
       service.nearbySearch(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           results.forEach(function (place) {
-            console.log(place.name);
-            console.log(place.vicinity);
+            //console.log(place.name);
+            //console.log(place.vicinity);
+            createPhotoMarker(place);
           });
+          document.getElementById('map').setAttribute("class", "map")
         } else {
           console.log('Error: ', status);
         }
@@ -249,9 +252,15 @@ function codeAddress() {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
+    document.getElementById('map').setAttribute("class", "map")
 }
 
 document.getElementById('search-btn').addEventListener('click', function() {
   const cityInput = document.getElementById('city-input').value;
   searchWeather(cityInput); 
+}); 
+
+document.getElementById('park-details-btn').addEventListener('click', function() {
+  const cityInput = document.getElementById('city-input').value;
+  searchDogParks(cityInput); 
 }); 
