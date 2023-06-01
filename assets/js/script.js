@@ -13,11 +13,15 @@ document.querySelector('main').addEventListener('click', function (event) {
 });
 
 function saveZipCode(event) {
-
   var zipCodeInput = document.getElementById('zipCode');
   var zipCode = zipCodeInput.value;
   parsezip = zipCodeInput.value;
+
+  var dogSizeSelect = document.getElementById('dogSize');
+  var dogSize = dogSizeSelect.options[dogSizeSelect.selectedIndex].text;
+
   localStorage.setItem('zipCode', zipCode);
+  localStorage.setItem('dogSize', dogSize);
 
   getDogBreeds();
   //Redirect 
