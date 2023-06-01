@@ -51,19 +51,44 @@ var parsezip;
 //  xhr.send();
 //}
 
-function displayDogBreeds(breeds) {
-  var breedsSection = document.getElementById('dogBreeds-section');
-  breedsSection.innerHTML = "";
+fetch("https://dog.ceo/api/breeds/list/all")
+  .then(response => response.json())
+  .then(data => {
+    const breedDropdown = document.getElementById("breed-dropdown");
+    const breeds = data.message;
+    const breedList = Object.keys(breeds);
 
-  for (var i = 0; i < breeds.length; i++) {
-    var breed = breeds[i];
-    var breedName = breed.name;
+    breedList.forEach(breed => {
+      const option = document.createElement("option");
+      option.value = breed;
+      option.textContent = breed;
+      breedDropdown.appendChild(option);
+    });
+  })
+  .catch(error => {
+    console.log("Error:", error);
+  });
 
-    var breedElement = document.createElement('p');
-    breedElement.textContent = breedName;
-    breedsSection.appendChild(breedElement);
-  }
-}
+  const breedDropdown = document.getElementById("breed-dropdown");
+
+
+breedDropdown.addEventListener("change", () => {
+  const selectedBreed = breedDropdown.value;
+
+  
+  fetch(`https://dog.ceo/api/breed/${selectedBreed}/images/random`)
+    .then(response => response.json())
+    .then(data => {
+      const imageUrl = data.message;
+
+      const dogImage = document.getElementById("dog-image");
+      dogImage.src = imageUrl;
+      dogImage.alt = selectedBreed;
+    })
+    .catch(error => {
+      console.log("Error:", error);
+    });
+});
 
 //fetch weather based on zipcode from local storage
 function zipCodefromLocal() {
