@@ -1,5 +1,7 @@
 //weather API
 const apiKey = '599e78c3459a8c73ce2b3faeb84e514d';
+var map;
+var parsezip;
 
 //save zip code to local storage
 document.querySelector('main').addEventListener('click', function (event) {
@@ -7,7 +9,6 @@ document.querySelector('main').addEventListener('click', function (event) {
   if (event.target.matches('#go-button')) {
     event.preventDefault();
     saveZipCode(event);
-
   }
 });
 
@@ -15,7 +16,7 @@ function saveZipCode(event) {
 
   var zipCodeInput = document.getElementById('zipCode');
   var zipCode = zipCodeInput.value;
-
+  parsezip = zipCodeInput.value;
   localStorage.setItem('zipCode', zipCode);
 
   getDogBreeds();
@@ -23,9 +24,12 @@ function saveZipCode(event) {
   setTimeout(function () {
     window.location.href = 'result.html';
   }, 1000);
-
 }
 
+/* document.getElementById('weather-btn').addEventListener('click', function() {
+    const cityInput = document.getElementById("city-input").value;
+    *searchWeather(cityInput); 
+  }); */
 
 //still need to display breeds based on userinput of small or medium
 function getDogBreeds() {
@@ -61,9 +65,6 @@ function displayDogBreeds(breeds) {
   }
 }
 
-
-
-
 //fetch weather based on zipcode from local storage
 function zipCodefromLocal() {
   var zipCode = localStorage.getItem('zipCode');
@@ -71,7 +72,6 @@ function zipCodefromLocal() {
     searchWeather(zipCode);
     searchDogParks(zipCode);
   }
-
 }
 //pull weather based on zipcode
 //copied Mark's code but will need to change code in html
@@ -99,7 +99,11 @@ function displayCurrentWeather(data) {
   document.getElementById('weather-icon').innerHTML = `<img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">`;
 }
 
-window.addEventListener('load', zipCodefromLocal);
+//function initMap() {
+//    var options = {
+//        zoom:15,
+//        center:{lat:29.4252,lng:-98.4946}
+//window.addEventListener('load', zipCodefromLocal);
 
 //load dog parks based on zipcode
 function searchDogParks(zipCode) {
@@ -112,6 +116,7 @@ function searchDogParks(zipCode) {
       var lat = location.lat();
       var lng = location.lng();
 
+      map.setCenter(results[0].geometry.location);
       //places API
       var service = new google.maps.places.PlacesService(document.createElement('div'));
       var request = {
@@ -124,9 +129,11 @@ function searchDogParks(zipCode) {
       service.nearbySearch(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
           results.forEach(function (place) {
-            console.log(place.name);
-            console.log(place.vicinity);
+            //console.log(place.name);
+            //console.log(place.vicinity);
+            createPhotoMarker(place);
           });
+          document.getElementById('map').setAttribute("class", "map")
         } else {
           console.log('Error: ', status);
         }
@@ -137,29 +144,124 @@ function searchDogParks(zipCode) {
   });
 }
 
-function initMap() {
-  var options = {
-    zoom: 8,
-    center: { lat: 29.4252, lng: -98.4946 }
-  }
+//function initMap() {
+//    var options = {
+//      zoom: 12,
+//      center: { lat: 29.4252, lng: -98.4946 }
+//    }
 
-  var map = new google.maps.Map(document.getElementById("map"), options);
+//    map = new google.maps.Map(document.getElementById("map"), options);
 
-  var marker = new google.maps.Marker({
-    position: { lat: 29.4260, lng: -98.4861 }, map: map,
-    //icon: image
-  });
-}
+//    var marker = new google.maps.Marker({
+//      position: { lat: 29.4260, lng: -98.4861 }, map: map,
+      //icon: image
+//    });
 
+//    map = new google.maps.Map(document.getElementById("map"), options);
 
+    /*var marker = new google.maps.Marker({
+        position:{lat:29.4260,lng:-98.4861},map:map
+    //    icon: image
+    }); */
+
+//    const request = {
+//      query: "pet park",
+//      fields: ["name", "geometry", "photo", "opening_hours", "formatted_address"],
+//    };
+
+//    service = new google.maps.places.PlacesService(map);
+//    service.findPlaceFromQuery(request, (results, status) => {
+//      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+//        for (let i = 0; i < results.length; i++) {
+          /* createMarker(results[i]); */
+//          createPhotoMarker(results[i]);
+//        }
+
+//        map.setCenter(results[0].geometry.location);
+//      }
+//    });
+//}
+
+//function createMarker(place) {
+//    if (!place.geometry || !place.geometry.location) return;
+
+//    const marker = new google.maps.Marker({
+//      map,
+//      position: place.geometry.location,
+//    });
+//    marker.setMap(map);
+    /*google.maps.event.addListener(marker, "click", () => {
+      infowindow.setContent(place.name || "");
+      infowindow.open(map);
+    }); */
+//}
 //initMap();
 
+//function createPhotoMarker(place) {
+//    var photos = place.photos;
+//    if (!photos) {
+//      return;
+//    }
 
-//previous code 
-//I don't see a weather-btn in the html
-//document.getElementById('weather-btn').addEventListener('click', function () {
-//const cityInput = document.getElementById('city-input').value;
-// searchWeather(cityInput);
-//});
+//    var marker = new google.maps.Marker({
+//      map: map,
+//      position: place.geometry.location,
+//      title: place.name,
+//      icon: photos[0].getUrl({maxWidth: 50, maxHeight: 50})
+//    });
+//}
+/* findPlace(); */
 
+//document.getElementById('park-btn').addEventListener('click', function() {
+//  codeAddress(); 
+//}); 
 
+//function codeAddress() {
+//    var loc;
+//    var address = document.getElementById('search-city').value;
+//    var geocoder= new google.maps.Geocoder();
+//    geocoder.geocode( { 'address': address}, function(results, status) {
+//      if (status == 'OK') {
+//        loc = results[0].geometry.location;
+//        map.setCenter(results[0].geometry.location);
+//        var marker = new google.maps.Marker({
+//            map: map,
+//            position: results[0].geometry.location
+//        });
+
+//        const request = {
+      
+//          location: loc,
+//          radius: '10000',
+//          fields: ["name", "geometry", "photo", "opening_hours", "formatted_address"],
+//          type : 'Park',
+//          keyword: 'dog park',
+//        };
+//        service = "";
+//        service = new google.maps.places.PlacesService(map);
+//        service.nearbySearch(request, (parkresults, parkstatus) => {
+//          if (parkstatus === google.maps.places.PlacesServiceStatus.OK && parkresults) {
+//            for (let i = 0; i < parkresults.length; i++) {
+              /* createMarker(results[i]); */
+//              createPhotoMarker(parkresults[i]);
+//            }
+      
+//            map.setCenter(results[0].geometry.location);
+//          }
+//        });
+//      } else {
+//        alert('Geocode was not successful for the following reason: ' + status);
+//      }
+//    });
+//    document.getElementById('map').setAttribute("class", "map")
+//}
+
+//document.getElementById('search-btn').addEventListener('click', function() {
+//  const cityInput = document.getElementById('city-input').value;
+//  searchWeather(cityInput); 
+//}); 
+
+//document.getElementById('park-details-btn').addEventListener('click', function() {
+//  const cityInput = document.getElementById('city-input').value;
+//  searchDogParks(cityInput); 
+//}); 
