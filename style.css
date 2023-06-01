@@ -103,3 +103,32 @@ button:hover {
   transition: font-size 0.2s ease-in-out;
   text-decoration: none;
 }
+
+#banner-section {
+  position: relative;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkfLGVYh8bQZ8rqv_bhJT5ymiCOugz1Javbg&usqp=CAU);
+  background-size: contain;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.banner-box {
+  position: relative;
+  z-index: 1;
+  flex-basis: 33.33%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.banner-image {
+  max-width: 50%;
+}
+
+.banner-box h3 {
+  margin-top: 10px;
+  font-family: 'Pangolin', cursive;
+}
