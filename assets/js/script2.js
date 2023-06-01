@@ -168,6 +168,11 @@ function addParkToList(place) {
   parkPhoneNumber.textContent = place.formatted_phone_number ? place.formatted_phone_number : 'Phone number not available';
 
   parkCard.appendChild(parkName);
+  parkCard.appendChild(parkAddress);
+  parkCard.appendChild(parkOpeningHours);
+  parkCard.appendChild(parkWebsite);
+  parkCard.appendChild(parkPhoneNumber);
+  
   parkList.appendChild(parkCard);
 }
 
