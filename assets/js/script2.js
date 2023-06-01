@@ -3,54 +3,6 @@ const apiKey = '599e78c3459a8c73ce2b3faeb84e514d';
 var map;
 var parsezip;
 
-//save zip code to local storage
-//document.querySelector('main').addEventListener('click', function (event) {
-  // Check if the event target is the go-button
-//  if (event.target.matches('#go-button')) {
-//    event.preventDefault();
-//    saveZipCode(event);
-//  }
-//});
-
-//function saveZipCode(event) {
-
-//  var zipCodeInput = document.getElementById('zipCode');
-//  var zipCode = zipCodeInput.value;
-//  parsezip = zipCodeInput.value;
-//  localStorage.setItem('zipCode', zipCode);
-
-//  getDogBreeds();
-  //Redirect 
-//  setTimeout(function () {
-//    window.location.href = 'result.html';
-//  }, 1000);
-//}
-
-/* document.getElementById('weather-btn').addEventListener('click', function() {
-    const cityInput = document.getElementById("city-input").value;
-    *searchWeather(cityInput); 
-  }); */
-
-//still need to display breeds based on userinput of small or medium
-//function getDogBreeds() {
-  //dog API
-//  var dogAPIkey = 'live_ORSd6zMzFxD9kAyCD7rK2W1Q0tTLMbHWIVySWzaGXwFu0PoO8NnVxQQ4xpeDRGUX';
-//  var dogUrl = 'https://api.thedogapi.com/v1/breeds?size=small';
-
-//  var xhr = new XMLHttpRequest();
-//  xhr.open('GET', dogUrl);
-//  xhr.setRequestHeader('x-api-key', dogAPIkey);
-//  xhr.onload = function () {
-//    if (xhr.status === 200) {
-//      var breeds = JSON.parse(xhr.responseText);
-//      processDogBreeds(breeds);
-//    } else {
-//      console.log('Error: ' + xhr.status);
-//    }
-//  };
-//  xhr.send();
-//}
-
 fetch("https://dog.ceo/api/breeds/list/all")
   .then(response => response.json())
   .then(data => {
@@ -124,12 +76,6 @@ function displayCurrentWeather(data) {
   document.getElementById('weather-icon').innerHTML = `<img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">`;
 
 }
-
-//function initMap() {
-//    var options = {
-//        zoom:15,
-//        center:{lat:29.4252,lng:-98.4946}
-//window.addEventListener('load', zipCodefromLocal);
 
 //load dog parks based on zipcode
 function searchDogParks(zipCode) {
