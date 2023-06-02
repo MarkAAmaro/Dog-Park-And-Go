@@ -5,6 +5,7 @@
   <title>Dog Park & Go</title>
   <!--Pure CSS-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
     integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
   <link rel="stylesheet" href="./style.css">
@@ -24,16 +25,13 @@
       mental stimulation, strengthens the bond between you, reduces destructive behaviors, prevents obesity, and
       improves overall well-being. Our website is here to assist you in finding the perfect dog park, where you and your
       beloved four-legged companion can create unforgettable experiences and cherished memories.</p>
-
   </header>
 
   <main>
-
     <div id="search-container">
-      <h2>Current Weather</h2>
+      <h2>Current Weather for <span id="city-name"></span></h2>
       <section id="weather-section">
         <div id="weather-icon"></div>
-        <p>Location: <span id="city-name"></span></p>
         <p id="temperature"></p>
         <p id="humidity"></p>
         <p id="wind-speed"></p>
@@ -41,8 +39,8 @@
     </div>
 
     <section id="park-details-section">
-      <h2>Park Details</h2>
-      <ul id="park-card"></ul>
+      <h2>Nearby Parks</h2>
+      <ul class='park' id="park-card"></ul>
     </section>
     <section id="map-section">
       <h2>Map</h2>
@@ -51,8 +49,8 @@
 
     <section id="dogBreeds-section">
       <h2>Dog Breeds</h2>
-      <h3>Are you looking for a loyal companaion to going to a park with? Does you current companaion need a friend?
-        Take look as these adorable faces and check out your neareast Dog adoption center to meet your next Paw Pal</h3>
+      <h3>Are you looking for a loyal companion to go to a park with? Does you current companion need a friend?
+        Take a look at these adorable faces and check out your neareast dog adoption center to meet your next Paw Pal.</h3>
       <select id="breed-dropdown">
         <option value="">Select a breed</option>
       </select>

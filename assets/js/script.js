@@ -23,59 +23,13 @@ function saveZipCode(event) {
   localStorage.setItem('zipCode', zipCode);
   localStorage.setItem('dogSize', dogSize);
 
-  getDogBreeds();
   //Redirect 
   setTimeout(function () {
     window.location.href = 'result.html';
   }, 1000);
 }
 
-//still need to display breeds based on userinput of small or medium
-function getDogBreeds() {
-  //dog API
-  var dogAPIkey = 'live_ORSd6zMzFxD9kAyCD7rK2W1Q0tTLMbHWIVySWzaGXwFu0PoO8NnVxQQ4xpeDRGUX';
-
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("x-api-key", dogAPIkey);
-
-  var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-  };
-
-  fetch("https://api.thedogapi.com/v1/breeds?limit=10&page=0", requestOptions)
-    .then(response => response.text())
-    .then(result => displayDogBreeds(result))
-    .catch(error => console.log('error', error));
-}
-
-function displayDogBreeds(breeds) {
-  var breedsSection = document.getElementById('dogBreeds-section');
-  breedsSection.innerHTML = " ";
-
-  for (var i = 0; i < breeds.length; i++) {
-    var breed = breeds[i];
-    var breedName = breed.name;
-
-    var breedElement = document.createElement('p');
-    breedElement.textContent = breedName;
-    breedsSection.appendChild(breedElement);
-  }
-}
-
-
-//fetch weather based on zipcode from local storage
-function zipCodefromLocal() {
-  var zipCode = localStorage.getItem('zipCode');
-  if (zipCode) {
-    searchWeather(zipCode);
-    searchDogParks(zipCode);
-  }
-}
-
-//javascript for result.html
+//Here starts the javascript for result.html
 
 //pull dog breeds from api and adds image when selected
 fetch("https://dog.ceo/api/breeds/list/all")
@@ -126,8 +80,9 @@ function zipCodefromLocal() {
     searchDogParks(zipCode, dogSize);
   }
 }
+
+
 //pull weather based on zipcode
-//copied Mark's code but will need to change code in html
 function searchWeather(zipCode) {
   fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`)
     .then(response => response.json())
@@ -167,6 +122,7 @@ function searchDogParks(zipCode, dogSize) {
       //places API
       var service = new google.maps.places.PlacesService(document.createElement('div'));
 
+
       switch (dogSize) {
         case 'Small, we can walk to the nearest park within 1-3 miles of us.':
           var request = {
@@ -201,16 +157,25 @@ function searchDogParks(zipCode, dogSize) {
           };
           break;
       }
-
       service.nearbySearch(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-          results.forEach(function (place) {
+        
+          //limit search results to 4
+          var limitedResults = results.slice(0, 4);
+          limitedResults.forEach(function (place) {
             createPhotoMarker(place);
-            addParkToList(place);
             getParkDetails(place.place_id);
           });
+
           document.getElementById('map').setAttribute("class", "map")
-        } else {
+        } else if(status === google.maps.places.PlacesServiceStatus.ZERO_RESULTS) {
+          //display message for 0 results
+          var messageElement = document.createElement('p');
+          messageElement.textContent = "ZERO RESULTS! Please try your search again.";
+          var parkElement = document.getElementsByClassName('park')[0];
+          parkElement.appendChild(messageElement);
+          return;
+        }else {
           console.log('Error: ', status);
         }
       });
@@ -219,50 +184,59 @@ function searchDogParks(zipCode, dogSize) {
     }
   });
 }
+function getParkDetails(placeId) {
+  var request = {
+    placeId: placeId,
+    fields: ['name', 'photos', 'formatted_address', 'url']
+  };
 
-function addParkToList(place) {
+  service.getDetails(request, function (place, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      var photo = place.photos[0];
+      var photoUrl = photo.getUrl();
+      addParkToList(place, photoUrl);
+    }
+  })
+}
+
+function addParkToList(place, photoUrl) {
   var parkList = document.getElementById('park-card');
 
-  
+
   var parkCard = document.createElement('li');
   parkCard.classList.add('park-card');
 
   var parkName = document.createElement('h3');
   parkName.textContent = place.name;
+  parkName.style.textAlign = 'center';
+
 
   var parkAddress = document.createElement('p');
   parkAddress.textContent = place.formatted_address;
 
-  var parkOpeningHours = document.createElement('p');
-  parkOpeningHours.textContent = place.opening_hours && place.opening_hours.weekday_text ? place.opening_hours.weekday_text.join('\n') : 'Opening hours not available';
   var parkWebsite = document.createElement('p');
-  parkWebsite.textContent = place.website ? '<a href="' + place.website + '" target="_blank">Visit Website</a>' : 'Website not available';
+  parkWebsite.innerHTML = place.url ? '<a href="' + place.url + '" target="_blank">Visit Website</a>' : 'Website not available';
 
-  var parkPhoneNumber = document.createElement('p');
-  parkPhoneNumber.textContent = place.formatted_phone_number ? place.formatted_phone_number : 'Phone number not available';
+  var photoWrapper = document.createElement('div');
+  photoWrapper.style.display = "flex";
+  photoWrapper.style['justify-content'] = 'center';
+  photoWrapper.style.marginBottom = '10px';
+
+
+  var parkPhoto = document.createElement('img');
+  parkPhoto.src = photoUrl;
+  parkPhoto.alt = place.name;
+  parkPhoto.style.width = '200px';
+  parkPhoto.style.height = '150px';
+
+  photoWrapper.appendChild(parkPhoto);
 
   parkCard.appendChild(parkName);
+  parkCard.appendChild(photoWrapper);
   parkCard.appendChild(parkAddress);
-  parkCard.appendChild(parkOpeningHours);
   parkCard.appendChild(parkWebsite);
-  parkCard.appendChild(parkPhoneNumber);
-  
+
   parkList.appendChild(parkCard);
-}
-
-function getParkDetails(placeId) {
-  var service = new google.maps.places.PlacesService(document.createElement('div'));
-
-  var request = {
-    placeId: placeId,
-    fields: ['formatted_address', 'opening_hours', 'website', 'phone_number']
-  };
-
-  service.getDetails(request, function (place, status) {
-    if (status === google.maps.places.PlacesServiceStatus.OK) {
-      addParkToList(place);
-    }
-  })
 }
 
 function initMap() {
@@ -275,23 +249,23 @@ function initMap() {
 
   var marker = new google.maps.Marker({
     position: { lat: 29.4260, lng: -98.4861 }, map: map,
-    
+
   });
 
   map = new google.maps.Map(document.getElementById("map"), options);
 
- 
+
 
   const request = {
     query: "pet park",
-    fields: ["name", "geometry", "photo", "opening_hours", "formatted_address"],
+    fields: ["name", "geometry", "photo", "formatted_address"],
   };
 
   service = new google.maps.places.PlacesService(map);
   service.findPlaceFromQuery(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
       for (let i = 0; i < results.length; i++) {
-      
+
         createPhotoMarker(results[i]);
       }
 
@@ -301,18 +275,6 @@ function initMap() {
 
   zipCodefromLocal();
 }
-
-function createMarker(place) {
-  if (!place.geometry || !place.geometry.location) return;
-
-  const marker = new google.maps.Marker({
-    map,
-    position: place.geometry.location,
-  });
-  marker.setMap(map);
-
-}
-
 
 function createPhotoMarker(place) {
   var photos = place.photos;
@@ -327,8 +289,6 @@ function createPhotoMarker(place) {
     icon: photos[0].getUrl({ maxWidth: 50, maxHeight: 50 })
   });
 }
-/* findPlace(); */
-
 
 function codeAddress() {
   var loc;
@@ -356,7 +316,6 @@ function codeAddress() {
       service.nearbySearch(request, (parkresults, parkstatus) => {
         if (parkstatus === google.maps.places.PlacesServiceStatus.OK && parkresults) {
           for (let i = 0; i < parkresults.length; i++) {
-            /* createMarker(results[i]); */
             createPhotoMarker(parkresults[i]);
           }
 
