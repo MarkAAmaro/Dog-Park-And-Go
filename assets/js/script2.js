@@ -1,7 +1,4 @@
-//weather API
-const apiKey = '599e78c3459a8c73ce2b3faeb84e514d';
-var map;
-var parsezip;
+
 //pull dog breeds from api and adds image when selected
 fetch("https://dog.ceo/api/breeds/list/all")
   .then(response => response.json())
