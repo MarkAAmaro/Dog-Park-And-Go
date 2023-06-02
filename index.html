@@ -12,12 +12,12 @@
      
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
         integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <!--starting page-->
 
 <body>
-    <main>
+    <main class="transparent-header">
         <header>
             <h1>Dog-Park-And-Go</h1>
         </header>
@@ -31,17 +31,12 @@
                     <option>We love a good car ride. Show us the nearest park within 10 miles.</option>
                 </select>
 
-
                 <label for="zipCode">Zip Code:</label>
                 <input type="text" id="zipCode">
                 <button id="go-button">Let's Go!</button>
             </fieldset>
         </form>
     </main>
-
-    <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAY6NmG73gJVoMm3w6-YvnWcN8-8_mELAM&libraries=geometry,places&callback=initMap">
-        </script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

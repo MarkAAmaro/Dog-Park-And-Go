@@ -75,8 +75,6 @@ function displayCurrentWeather(data) {
   document.getElementById('humidity').textContent = `Humidity: ${humidity}%`;
   document.getElementById('wind-speed').textContent = `Wind Speed: ${windSpeed} m/s`;
   document.getElementById('weather-icon').innerHTML = `<img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">`;
-
-  var weatherApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=' + searchInputVal + '&appid=' + APIKey; "units=imperial"
 }
 
 //load dog parks based on zipcode
