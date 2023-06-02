@@ -20,14 +20,10 @@ body {
 }
 
 header {
-  background-color: #FBEEC1;
+  background-color: #f0f0f0;
   padding: 20px;
   text-align: center;
   font-family: 'Pangolin', cursive;
-}
-
-.transparent-header {
-  background-color: rgba(255, 255, 255, 0.7);;
 }
 
 header h1 {
@@ -38,11 +34,24 @@ header h1 {
   font-family: 'Pangolin', cursive;
 }
 
+nav {
+  margin-top: 10px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
 main {
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #FBEEC1;
+  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -61,7 +70,7 @@ h2 {
 /* Button styles */
 button {
   padding: 10px 20px;
-  background-color: #FBEEC1;
+  background-color: #f0f0f0;
   border: none;
   border-radius: 4px;
   font-size: 16px;
@@ -77,25 +86,22 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* CSS for result.html*/
 .map {
   height: 400px;
   width: 100%;
 }
 
-#park-card {
-  list-style:none;
-  padding: 0;
-  margin: 0;
-}
-
-#park-card li {
-  background-color: #daad86;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-style: solid;
-  border: 5px, #bc986a;
+/* CSS for intro.html*/
+#go-button {
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: font-size 0.2s ease-in-out;
+  text-decoration: none;
 }
 
 .banner-box {
@@ -128,6 +134,6 @@ button:hover {
 .banner-box h3 {
   margin-top: 10px;
   font-family: 'Pangolin', cursive;
-  font-size: 16px; 
+  font-size: 30px; 
   color: #333;
 }
