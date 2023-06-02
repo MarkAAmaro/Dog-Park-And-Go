@@ -2,7 +2,7 @@
 const apiKey = '599e78c3459a8c73ce2b3faeb84e514d';
 var map;
 var parsezip;
-
+//pull dog breeds from api and adds image when selected
 fetch("https://dog.ceo/api/breeds/list/all")
   .then(response => response.json())
   .then(data => {
@@ -76,6 +76,7 @@ function displayCurrentWeather(data) {
   document.getElementById('wind-speed').textContent = `Wind Speed: ${windSpeed} m/s`;
   document.getElementById('weather-icon').innerHTML = `<img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">`;
 
+  var weatherApiUrl = 'https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=' + searchInputVal + '&appid=' + APIKey; "units=imperial"
 }
 
 //load dog parks based on zipcode
@@ -149,7 +150,7 @@ function searchDogParks(zipCode, dogSize) {
 function addParkToList(place) {
   var parkList = document.getElementById('park-card');
 
-  //creates a list item for each park
+  
   var parkCard = document.createElement('li');
   parkCard.classList.add('park-card');
 
@@ -201,15 +202,12 @@ function initMap() {
 
   var marker = new google.maps.Marker({
     position: { lat: 29.4260, lng: -98.4861 }, map: map,
-    //icon: image
+    
   });
 
   map = new google.maps.Map(document.getElementById("map"), options);
 
-  /*var marker = new google.maps.Marker({
-      position:{lat:29.4260,lng:-98.4861},map:map
-  //    icon: image
-  }); */
+ 
 
   const request = {
     query: "pet park",
@@ -220,7 +218,7 @@ function initMap() {
   service.findPlaceFromQuery(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
       for (let i = 0; i < results.length; i++) {
-        /* createMarker(results[i]); */
+      
         createPhotoMarker(results[i]);
       }
 
@@ -239,12 +237,9 @@ function createMarker(place) {
     position: place.geometry.location,
   });
   marker.setMap(map);
-  /*google.maps.event.addListener(marker, "click", () => {
-    infowindow.setContent(place.name || "");
-    infowindow.open(map);
-  }); */
+
 }
-//initMap();
+
 
 function createPhotoMarker(place) {
   var photos = place.photos;
