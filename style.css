@@ -8,6 +8,7 @@ li {
   padding: 0;
 }
 
+
 body {
   background-image: url(https://static.vecteezy.com/system/resources/previews/000/303/604/original/a-dog-park-scene-vector.jpg);
   background-attachment: fixed;
@@ -78,22 +79,30 @@ button:hover {
 }
 
 /* CSS for result.html*/
+#weather-section {
+  font-size: larger;
+}
+
 .map {
   height: 400px;
   width: 100%;
 }
 
 #park-card {
+  display:flex;
+  flex-wrap:wrap;
   list-style:none;
   padding: 0;
   margin: 0;
+  text-align: center;
 }
 
 #park-card li {
+  flex: 1 0 300px;
   background-color: #daad86;
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
   border-style: solid;
   border: 5px, #bc986a;
 }
