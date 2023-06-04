@@ -95,13 +95,14 @@ function searchWeather(zipCode) {
 }
 function displayCurrentWeather(data) {
   const city = data.name;
-  const temperature = data.main.temp;
+  const temperatureKelvin = data.main.temp;
+  const temperatureFahrenheit = ((temperatureKelvin - 273.15) * (9/5) + 32).toFixed(2);
   const humidity = data.main.humidity;
   const windSpeed = data.wind.speed;
   const icon = data.weather[0].icon;
 
   document.getElementById('city-name').textContent = city;
-  document.getElementById('temperature').textContent = `Temperature: ${temperature} K`;
+  document.getElementById('temperature').textContent = `Temperature: ${temperatureFahrenheit} °F`;
   document.getElementById('humidity').textContent = `Humidity: ${humidity}%`;
   document.getElementById('wind-speed').textContent = `Wind Speed: ${windSpeed} m/s`;
   document.getElementById('weather-icon').innerHTML = `<img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">`;
