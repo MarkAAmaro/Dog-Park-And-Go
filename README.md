@@ -59,6 +59,10 @@ https://developers.google.com/maps/documentation/places/web-service/details#fiel
 
 https://stackoverflow.com/questions/56877374/
 
+https://dog.ceo/dog-api/
+
+https://openweathermap.org/current
+
 how-to-increase-the-number-of-resulting-places-for-google-nearby-places-web-serv
 
 https://www.csscodelab.com/pure-css-weather-card-flexbox/
