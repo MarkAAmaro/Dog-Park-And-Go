@@ -21,21 +21,21 @@ N/A
 
 To use this application, visit this link: https://markaamaro.github.io/Dog-Park-And-Go/
 
-The first page prompts you to enter how far you would like to walk with your dog to the nearest dog park or if you would like to drive within ten miles. [Home page for Dog Park & Go](assets/Images/ScreenShots/ScreenShot1.png)
+The first page prompts you to enter how far you would like to walk with your dog to the nearest dog park or if you would like to drive within ten miles. [Home page for Dog Park & Go](./assets/Images/ScreenShots/ScreenShot1.png)
 
-You enter your zip code and click "Let's Go!" [zip code input and "Let's Go!" button](assets/Images/ScreenShots/ScreenShot2.png)
+You enter your zip code and click "Let's Go!" [zip code input and "Let's Go!" button](./assets/Images/ScreenShots/ScreenShot2.png)
 
-At the top of the next page there is a description on the benefits of walking your dog. [dog walking benefits](assets/Images/ScreenShots/ScreenShot3.png)
+At the top of the next page there is a description on the benefits of walking your dog. [dog walking benefits](./assets/Images/ScreenShots/ScreenShot3.png)
 
-Next you'll see the current weather for your location to decide if it's optimal dog walking weather. [current weather](assets/Images/ScreenShots/ScreenShot4.png)
+Next you'll see the current weather for your location to decide if it's optimal dog walking weather. [current weather](./assets/Images/ScreenShots/ScreenShot4.png)
 
-Beneath the weather will be a list of nearby parks with a picture, address, and link to more information. In this instance, the user chose a small distance from their location so there were a smaller number of results. You will see a max of four parks loaded at any time.[Nearby Parks: Stillwater Ranch Community Park](assets/Images/ScreenShots/ScreenShot5.png)
+Beneath the weather will be a list of nearby parks with a picture, address, and link to more information. In this instance, the user chose a small distance from their location so there were a smaller number of results. You will see a max of four parks loaded at any time.[Nearby Parks: Stillwater Ranch Community Park](./assets/Images/ScreenShots/ScreenShot5.png)
 
-Then there will be a corresponding map that will show where you can find the park in your city with a picture. [google map with pictures](assets/Images/ScreenShots/ScreenShot6.png)
+Then there will be a corresponding map that will show where you can find the park in your city with a picture. [google map with pictures](./assets/Images/ScreenShots/ScreenShot6.png)
 
-In the next section, we have additional information for pet owners including those who may be looking for a new dog. You can choose a breed from the drop down menu and it will populate a picture. [Dog Breeds: picture of affenpinscher](assets/Images/ScreenShots/ScreenShot7.png)
+In the next section, we have additional information for pet owners including those who may be looking for a new dog. You can choose a breed from the drop down menu and it will populate a picture. [Dog Breeds: picture of affenpinscher](./assets/Images/ScreenShots/ScreenShot7.png)
 
-Lastly, you will find will three resources to adopt a dog, get them groomed, and buy all the supplies you need to take care of your old or new companion. [Resources: picture of dog smiling](assets/Images/ScreenShots/ScreenShot8.png)
+Lastly, you will find will three resources to adopt a dog, get them groomed, and buy all the supplies you need to take care of your old or new companion. [Resources: picture of dog smiling](./assets/Images/ScreenShots/ScreenShot8.png)
 
 ## Credits
 
