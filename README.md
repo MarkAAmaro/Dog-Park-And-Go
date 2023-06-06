@@ -4,13 +4,13 @@
 
 Our project aims to create a user friendly website that helps users find a dog park. The website will provide information about each park and show the current weather for the location entered.
 As dog owners, we found it to be important for everyone to have a one stop shop for dog related activities. Our motivation for this project was to help dog owners be able to find the closest dog park to them based on the size of their dog.
-As a group, we gained a multitude of knowledge. We were able to integrate the skills we have been taught over the past few weeks, such as HTML, CSS, JavaScript, and APIs into one application. We also developed an aptitude for collaborative work and coding as a cohesive team.
+As a group, we gained a multitude of knowledge. We were able to integrate the skills we have been taught over the past few weeks, such as HTML, CSS, JavaScript, and APIs into one application. We also developed our skills around collaborative work and coding as a cohesive team.
 
 In the end we used four APIs: 
-- the Dog CEO API to pull pictures of dogs based on their breed. 
-- Google Maps API to pull nearby parks and their information based on user input and a corresponding map. 
-- OpenWeather API to pull the current weather of the user based on their zip code. 
-- And the Google Fonts API to get a fun dog font for our application. 
+- the Dog CEO API to pull pictures of dogs based on their breed. https://dog.ceo/dog-api/
+- Google Maps API to pull nearby parks and their information based on user input and a corresponding map. https://developers.google.com/maps/documentation
+- OpenWeather API to pull the current weather of the user based on their zip code. https://openweathermap.org/currenthow-to-increase-the-number-of-resulting-places-for-google-nearby-places-web-serv
+- And the Google Fonts API to get a fun dog font for our application. https://fonts.google.com/
 
 
 ## Installation
